@@ -1,0 +1,14 @@
+独断的部署工具与Kubernetes
+===
+
+ *注意：这篇文章的目的是让你了解Kubernetes的设计理念。*
+
+**你真的应该利用Kubernetes来完成你的工作，真的。**
+
+在我的理解中，Kubernetes有一个巨大的转变就是它提供的各种东西，例如replication controllers、services、pods等等，就好像砌积木一样。当然了，你可以用Kubernetes来通过写几个yaml文件就可以进行大规模部署。然而，在有些情况下，Kubernetes还可以为你完成更高层次的事情提供更多的帮助。
+
+回想一下部署应用到PaaS上去的常规流程。如果你用的是Heroku，你需要`git push`；如果是Google App Engine，你需要`appcfg.py update`。然后PaaS会负责创建和配置一套既定的资源去运行你的应用。而你不用去想一些例如“我需要replication controller、service等等”之类的问题。你只需要做部署你的代码这步。在用PaaS的过程中，你再也不用逐个去考虑运行你应用所需的资源。
+
+我感觉通过Kubernetes来制定一系列的工作流程对于逐渐把Development过渡到DevOps是起到关键性作用的。开发人员就跟往常一样不用太关注平台是如何部署他们开发出来的应用。他们只需要编写代码，然后通过某种方式来通知到平台。DevOps需要支持到这种方式。
+
+我们可以通过Kubernetes来实现PaaS。而且是非常建议这么做的。Deis背后的热心开发者们最近重新开发出Deis v2以支持Kubernetes。尽管你可以在部署应用的过程中需要的每个Kubernetes内的资源都去明确地定义，不过你没这个必要，而且这种做法是刚好与Kubernetes的理念相违背的。
